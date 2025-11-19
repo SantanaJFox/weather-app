@@ -44,10 +44,21 @@
 }
 
 .description {
+    opacity: 0.8;
     color: #fff;
-    font-size: 35px;
+    font-size: 18px;
     line-height: 1;
-    margin-bottom: 25px;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.feelslike {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: capitalize;
+    margin-top: 5px;
 }
 
 .location {
@@ -65,13 +76,6 @@
     text-align: center;
 }
 
-.weather-data col {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 12pt;
-}
-
 .weather-data .col span {
     display: block;
     font-size: 16pt;
@@ -84,3 +88,4 @@
     margin-right: 25px;
     margin-Bottom: 10px;
 }
+
