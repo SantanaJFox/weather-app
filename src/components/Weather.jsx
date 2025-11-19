@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Weather.css';
 
-import search_icon from '../assets/search.png';
-import clear_icon from '../assets/clear.png';
-import cloud_icon from '../assets/cloud.png';
-import drizzle_icon from '../assets/drizzle.png';
-import rain_icon from '../assets/rain.png';
-import snow_icon from '../assets/snow.png';
-import humidity_icon from '../assets/humidity.png';
-import wind_icon from '../assets/wind.png';
+import clear_icon from '../assets/clear.png'
+import clear_night_icon from '../assets/clear_night.png'
+import cloud_icon from '../assets/cloud.png'
+import cloud_night_icon from '../assets/cloud_night.png'
+import drizzle_icon from '../assets/drizzle.png'
+import drizzle_night_icon from '../assets/drizzle_night.png'
+import rain_icon from '../assets/rain.png'
+import rain_night_icon from '../assets/rain_night.png'
+import snow_icon from '../assets/snow.png'
+import snow_night_icon from '../assets/snow_night.png'
+import humidity_icon from '../assets/humidity.png'
+import wind_icon from '../assets/wind.png'
+import search_icon from '../assets/search.png'
 
 const Weather = () => {
 
@@ -17,24 +22,25 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   const allIcons = {
-    "01d": clear_icon,
-    "01n": clear_icon,
-    "02d": cloud_icon,
-    "03d": cloud_icon,
-    "03n": cloud_icon,
-    "04d": drizzle_icon,
-    "04n": drizzle_icon,
-    "09d": rain_icon,
-    "09n": rain_icon,
-    "10d": rain_icon,
-    "10n": rain_icon,
-    "13d": snow_icon,
-    "13n": snow_icon,
-  };
+        "01d": clear_icon,
+        "01n": clear_night_icon,
+        "02d": cloud_icon,
+        "02n": cloud_night_icon,
+        "03d": cloud_icon,
+        "03n": cloud_night_icon,
+        "04d": drizzle_icon,
+        "04n": drizzle_night_icon,
+        "09d": rain_icon,
+        "09n": rain_night_icon,
+        "10d": rain_icon,
+        "10n": rain_night_icon,
+        "13d": snow_icon,
+        "13n": snow_night_icon,
+    };
 
   const search = async (city) => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=a3753b23cbafefc889307c508ccc5447`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=a3753b23cbafefc889307c508ccc5447`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -50,6 +56,8 @@ const Weather = () => {
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp),
+        high: Math.floor(data.main.temp_max),
+        low: Math.floor(data.main.temp_min),
         feelsLike: Math.floor(data.main.feels_like),
         description: data.weather?.[0]?.description ?? '',
         location: `${data.name}${data.sys?.country ? `, ${data.sys.country}` : ''}`,
@@ -79,15 +87,20 @@ const Weather = () => {
       <img src={weatherData.icon} alt="weather icon" className="weather-icon" />
 
       <p className="temperature">
-        {weatherData.temperature}°c</p>
+        {weatherData.temperature}°f</p>
       <p className="location">{weatherData.location}</p>
       <p style={{ textTransform: 'capitalize', marginTop: 6 }}>{weatherData.description}</p>
       <p style={{ opacity: 0.8, marginTop: 2 }}>Feels like {weatherData.feelsLike}°c</p>
 
       <div className="weather-data">
         <div className="col">
+            <div>
+                    <span>{weatherData.low}°F</span>
+                    <span>Low</span>
+                </div>
           <img src={humidity_icon} alt="humidity" />
           <div>
+            
             <p>{weatherData.humidity}%</p>
           
           
@@ -96,6 +109,10 @@ const Weather = () => {
         </div>
 
         <div className="col">
+            <div>
+                    <span>{weatherData.high}°F</span>
+                    <span>High</span>
+                </div>
           <img src={wind_icon} alt="wind" />
           <div>
             <p>{weatherData.windSpeed} km/h</p>
