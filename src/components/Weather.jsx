@@ -1,4 +1,4 @@
-icalimport React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Weather.css';
 
 import search_icon from '../assets/search.png';
