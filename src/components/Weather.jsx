@@ -79,7 +79,7 @@ const Weather = () => {
       <img src={weatherData.icon} alt="weather icon" className="weather-icon" />
 
       <p className="temperature">
-        {weatherData.temperature}°f</p>
+        {weatherData.temperature}°c</p>
       <p className="location">{weatherData.location}</p>
       <p style={{ textTransform: 'capitalize', marginTop: 6 }}>{weatherData.description}</p>
       <p style={{ opacity: 0.8, marginTop: 2 }}>Feels like {weatherData.feelsLike}°c</p>
