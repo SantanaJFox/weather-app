@@ -89,8 +89,8 @@ const Weather = () => {
       <p className="temperature">
         {weatherData.temperature}°F</p>
       <p className="location">{weatherData.location}</p>
-      <p style={{ textTransform: 'capitalize', marginTop: 6 }}>{weatherData.description}</p>
-      <p style={{ opacity: 0.8, marginTop: 2 }}>Feels like {weatherData.feelsLike}°F</p>
+      <p className="description">{weatherData.description}</p>
+      <p className="feelslike">Feels like {weatherData.feelsLike}°F</p>
 
       <div className="weather-data">
         <div className="col">
