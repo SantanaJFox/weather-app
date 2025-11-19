@@ -1,4 +1,4 @@
-alimport React, { useState, useEffect, useRef } from 'react';
+icalimport React, { useState, useEffect, useRef } from 'react';
 import './Weather.css';
 
 import search_icon from '../assets/search.png';
@@ -34,7 +34,7 @@ const Weather = () => {
 
   const search = async (city) => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=a3753b23cbafefc889307c508ccc5447`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=a3753b23cbafefc889307c508ccc5447`;
       const response = await fetch(url);
       const data = await response.json();
 
